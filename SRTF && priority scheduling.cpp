@@ -12,12 +12,32 @@ int RT;
 int ReT;
 int priority;
 };
+struct comp{
 
-void SRTF(process a[]){
+bool operator()(process const& p1,process const& p2){
+
+return p1.ReT <p2.ReT;
 
 
+}
+
+
+
+};
+
+
+void SRTF(process a[],int n){
+
+priority_queue<process,vector<process>,comp> PQ;
+
+for(int i=0;i<n;i++){
+
+
+
+
+}
  printf("SRTF AT = %d\n",a[0].AT);
-a[0].AT=10;
+   a[0].AT=10;
 
 
 }
@@ -32,7 +52,8 @@ void Priority(process a){
 
 
 int main(){
-    int p,compTime;
+    int p;
+    int compTime;
     struct process pro[100];
 scanf("%d",&p);
 for(int i=0;i<p;i++){
@@ -40,7 +61,7 @@ for(int i=0;i<p;i++){
     scanf("%d",&pro[i].AT);
     scanf("%d",&pro[i].BT);
     scanf("%d",&pro[i].priority);
-
+    pro[i].ReT = pro[i].BT ;
 }
 for(int i=0;i<p;i++){
 
@@ -54,7 +75,7 @@ for(int i=0;i<p;i++){
 
 
 }
-SRTF(pro);
+SRTF(pro,p);
  printf("after SRTF AT = %d\n",pro[0].AT);
 return 0;
 }
