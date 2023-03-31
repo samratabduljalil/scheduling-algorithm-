@@ -13,6 +13,7 @@ int ReT;
 int priority;
 int id;
 int first;
+int flag =0;
 };
 struct comp{
 
@@ -33,16 +34,18 @@ void SRTF(process a[],int n){
 priority_queue<process,vector<process>,comp> PQ;
 
 bool h = true;
-
-while(h){
 int y = 0;
+while(h){
+
 for(int i=0;i<n;i++){
-if(a[i].AT <= y){
+if(a[i].AT <= y && a[i].flag==0){
 PQ.push(a[i]);
-
+a[i].flag=1;
 
 }
+
 }
+y++;
  process d;
 d = PQ.top();
 PQ.pop();
@@ -107,22 +110,21 @@ for(int i=0;i<p;i++){
     pro[i].ReT = pro[i].BT ;
     pro[i].id=i;
 }
+SRTF(pro,p);
 for(int i=0;i<p;i++){
 
     printf("AT = %d\n",pro[i].AT);
     printf("BT = %d\n",pro[i].BT);
-    printf("BT = %d\n",pro[i].CT);
+    printf("CT = %d\n",pro[i].CT);
     printf("TAT = %d\n",pro[i].TAT);
     printf("WT = %d\n",pro[i].WT);
     printf("RT = %d\n",pro[i].RT);
+    printf("Remaining Time = %d\n",pro[i].ReT);
+     printf("\n");
 
 
 
 }
-printf("compTime = %d\n",compTime);
-SRTF(pro,p);
- printf("after SRTF AT = %d\n",pro[0].AT);
-
  printf("BT compTime = %d\n",compTime);
 
 return 0;
