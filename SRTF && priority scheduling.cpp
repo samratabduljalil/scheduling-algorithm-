@@ -11,6 +11,8 @@ int WT;
 int RT;
 int ReT;
 int priority;
+int id;
+int first;
 };
 struct comp{
 
@@ -41,6 +43,29 @@ PQ.push(a[i]);
 
 }
 }
+ process d;
+d = PQ.top();
+PQ.pop();
+
+if(d.ReT != 0 ){
+if(d.ReT == d.BT){
+a[d.id].first = compTime;
+}
+compTime++;
+a[d.id].ReT--;
+if(a[d.id].ReT!=0){
+PQ.push(a[d.id]);
+
+
+}else{
+
+a[d.id].CT=compTime;
+a[d.id].TAT=a[d.id].CT-a[d.id].AT;
+a[d.id].WT=a[d.id].TAT-a[d.id].BT;
+a[d.id].RT=a[d.id].first-a[d.id].AT;
+
+
+
 
 
 
@@ -48,14 +73,15 @@ PQ.push(a[i]);
 
 }
 
+}
 
-PQ.push(a[1]);
- process d;
-d = PQ.top();
+if(PQ.empty())
+h = false;
 
- printf("SRTF AT = %d\n",d.AT);
-   a[0].AT=10;
-compTime++;
+}
+
+
+
 
 }
 
@@ -79,6 +105,7 @@ for(int i=0;i<p;i++){
     scanf("%d",&pro[i].BT);
     scanf("%d",&pro[i].priority);
     pro[i].ReT = pro[i].BT ;
+    pro[i].id=i;
 }
 for(int i=0;i<p;i++){
 
