@@ -9,13 +9,15 @@ int CT;
 int TAT;
 int WT;
 int RT;
+int ReT;
+int priority;
 };
 
 void SRTF(process a[]){
 
 
  printf("SRTF AT = %d\n",a[0].AT);
-
+a[0].AT=10;
 
 
 }
@@ -30,13 +32,14 @@ void Priority(process a){
 
 
 int main(){
-    int p;
+    int p,compTime;
     struct process pro[100];
 scanf("%d",&p);
 for(int i=0;i<p;i++){
 
     scanf("%d",&pro[i].AT);
     scanf("%d",&pro[i].BT);
+    scanf("%d",&pro[i].priority);
 
 }
 for(int i=0;i<p;i++){
@@ -52,6 +55,6 @@ for(int i=0;i<p;i++){
 
 }
 SRTF(pro);
-
+ printf("after SRTF AT = %d\n",pro[0].AT);
 return 0;
 }
