@@ -27,9 +27,21 @@ return p1.ReT > p2.ReT;
 
 
 };
+struct comp2{
+
+bool operator()(process const& p1,process const& p2){
+
+return p1.priority < p2.priority;
+
+
+}
+
+
+
+};
  int compTime=0;
 
-void SRTF(process a[],int n){
+void SRTF(process a[],int n,int check){
 
 priority_queue<process,vector<process>,comp> PQ;
 
@@ -88,9 +100,84 @@ h = false;
 
 }
 
-void Priority(process a){
+void Priority(process a[],int n,int check){
+
+   priority_queue<process,vector<process>,comp2> PQ1;
+
+   if(check!=0){
 
 
+
+
+
+
+}else{
+
+
+
+
+
+
+
+
+
+
+
+
+bool h = true;
+int y = 0;
+while(h){
+
+for(int i=0;i<n;i++){
+if(a[i].AT <= y && a[i].flag==0){
+PQ1.push(a[i]);
+a[i].flag=1;
+
+}
+
+}
+y++;
+ process d;
+d = PQ1.top();
+PQ1.pop();
+
+if(d.ReT != 0 ){
+if(d.ReT == d.BT){
+a[d.id].first = compTime;
+}
+compTime++;
+a[d.id].ReT--;
+if(a[d.id].ReT!=0){
+PQ1.push(a[d.id]);
+
+
+}else{
+
+a[d.id].CT=compTime;
+a[d.id].TAT=a[d.id].CT-a[d.id].AT;
+a[d.id].WT=a[d.id].TAT-a[d.id].BT;
+a[d.id].RT=a[d.id].first-a[d.id].AT;
+
+
+
+
+
+
+
+
+}
+
+}
+
+if(PQ1.empty())
+h = false;
+
+}
+
+
+
+
+}
 }
 
 
@@ -110,7 +197,7 @@ for(int i=0;i<p;i++){
     pro[i].ReT = pro[i].BT ;
     pro[i].id=i;
 }
-SRTF(pro,p);
+SRTF(pro,p,0);
 for(int i=0;i<p;i++){
 
     printf("AT = %d\n",pro[i].AT);
