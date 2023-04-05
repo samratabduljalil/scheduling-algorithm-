@@ -44,7 +44,7 @@ return p1.priority < p2.priority;
 void SRTF(process a[],int n){
 
 priority_queue<process,vector<process>,comp> PQ;
- priority_queue<process,vector<process>,comp2> PQ2;
+
 
 bool h = true;
 int y = 0;
@@ -62,62 +62,10 @@ C++;
 }
 y++;
 
-process d,k,j,l;
-
-
-if(PQ.size()>=2){
-d = PQ.top();
-PQ.pop();
-k = PQ.top();
-PQ.pop();
-    if(k.ReT==d.ReT){
-        PQ2.push(k);
-        PQ2.push(d);
-        j=PQ2.top();
-        PQ2.pop();
-        l=PQ2.top();
-          PQ2.pop();
-
-
-if(j.ReT != 0 ){
-if(j.ReT == j.BT){
-a[j.id].first = compTime;
-}
-compTime++;
-a[j.id].ReT--;
-if(a[j.id].ReT!=0){
-PQ.push(a[j.id]);
-PQ.push(a[l.id]);
-
-
-}else{
-
-a[j.id].CT=compTime;
-a[j.id].TAT=a[j.id].CT-a[j.id].AT;
-a[j.id].WT=a[j.id].TAT-a[j.id].BT;
-a[j.id].RT=a[j.id].first-a[j.id].AT;
+process d;
 
 
 
-
-
-
-
-
-}
-
-}
-    }else{
-PQ.push(a[k.id]);
-PQ.push(a[d.id]);
-
-}
-
-
-
-
-
-}
 d=PQ.top();
 PQ.pop();
 
@@ -162,7 +110,7 @@ h = false;
 void Priority(process a[],int n){
 
    priority_queue<process,vector<process>,comp2> PQ;
-   priority_queue<process,vector<process>,comp> PQ2;
+
 
 
 
@@ -180,62 +128,10 @@ a[i].flag=1;
 
 }
 y++;
- process d,k,j,l;
-
-
-if(PQ.size()>=2){
-d = PQ.top();
-PQ.pop();
-k = PQ.top();
-PQ.pop();
-    if(k.ReT==d.ReT){
-        PQ2.push(k);
-        PQ2.push(d);
-        j=PQ2.top();
-        PQ2.pop();
-        l=PQ2.top();
-          PQ2.pop();
-
-
-if(j.ReT != 0 ){
-if(j.ReT == j.BT){
-a[j.id].first = compTime;
-}
-compTime++;
-a[j.id].ReT--;
-if(a[j.id].ReT!=0){
-PQ.push(a[j.id]);
-PQ.push(a[l.id]);
-
-
-}else{
-
-a[j.id].CT=compTime;
-a[j.id].TAT=a[j.id].CT-a[j.id].AT;
-a[j.id].WT=a[j.id].TAT-a[j.id].BT;
-a[j.id].RT=a[j.id].first-a[j.id].AT;
+ process d;
 
 
 
-
-
-
-
-
-}
-
-}
-    }else{
-PQ.push(a[k.id]);
-PQ.push(a[d.id]);
-
-}
-
-
-
-
-
-}
 d=PQ.top();
 PQ.pop();
 if(d.ReT != 0 ){
